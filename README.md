@@ -9,3 +9,11 @@ Learning GoLang
 -  new() and make()
 -  we put some data structure in these
 -  diff between new and make
+-  Garbage collection happens automatically.
+- ![image](https://github.com/user-attachments/assets/bb56daec-9be2-4ad1-86ea-6d7c860c8fe1)
+- ![image](https://github.com/user-attachments/assets/1d810a23-ba92-44ba-8096-0d38e1c12bd6)
+- runtime package
+- func NumCPU
+- 
+
+
