@@ -14,6 +14,11 @@ Learning GoLang
 - ![image](https://github.com/user-attachments/assets/1d810a23-ba92-44ba-8096-0d38e1c12bd6)
 - runtime package
 - func NumCPU
-- 
+
+## GO MOD
+- ![image](https://github.com/user-attachments/assets/f31dfd3a-16f4-4937-bba2-9cc6ab063409)
+- The indirect here means that the package is not being used currently in the code.
+- go.sum gets created which has the HASH of the modules.
+
 
 
