@@ -19,6 +19,13 @@ Learning GoLang
 - ![image](https://github.com/user-attachments/assets/f31dfd3a-16f4-4937-bba2-9cc6ab063409)
 - The indirect here means that the package is not being used currently in the code.
 - go.sum gets created which has the HASH of the modules.
+- The modules are stored in `go-home/bin/package/mod/module_name/cache`
+- `go list -m all` - list the dependent packages
+- `go list -m -versions github.com/gorilla/mux`
+- `go mod tidy`
+- `go mod why github.com/gorilla/mux`
+- `go mod graph`
+- `go mod vendor`
 
 
 
