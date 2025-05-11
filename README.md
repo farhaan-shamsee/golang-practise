@@ -35,5 +35,15 @@ Learning GoLang
 
 ---
 
+### Concurrency and goroutines
+
+- ![image](https://github.com/user-attachments/assets/7f652cc6-0681-4d17-ad15-36e701c446cf)
+- Eating, using Instagram adn switching on AC analogy
+- Goroutines is the way to achieve parallelism
+- ![image](https://github.com/user-attachments/assets/05b02c1b-adfd-4e8f-9483-e1efa6e8b539)
+- ![image](https://github.com/user-attachments/assets/a0f63816-e5cf-4086-96bc-b986f6273b7b)
+- 
+
+
 
 
