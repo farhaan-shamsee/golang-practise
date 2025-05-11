@@ -1,0 +1,40 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: my-bundle
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: ssh://git@test.com/<path-to-dev-cluster-repo>/dev-cluster.git
+  ignore: |
+    .git/
+    .github/
+    .gitlab-ci.yml
+  ref:
+    branch: main
+  secretRef:
+    name: flux-system
+
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: my-bundle-ks
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  dependsOn:
+    - name: infrastructure
+  sourceRef:
+    kind: GitRepository
+    name: my-bundle
+  path: ""
+  prune: true
+  wait: true
+  timeout: 2m
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: cluster-settings
+        optional: false
