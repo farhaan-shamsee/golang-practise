@@ -8,15 +8,17 @@ import (
 	// "time"
 )
 
+// `signals` is a slice to store the endpoints that are successfully processed.
 var signals = []string{"test"}
 
-var wg sync.WaitGroup //usually these are pointers
-var mut sync.Mutex //usually these are pointers
+// `wg` is a WaitGroup to ensure the main function waits for all goroutines to complete.
+var wg sync.WaitGroup // usually these are pointers
+
+// `mut` is a Mutex to ensure thread-safe access to shared resources like `signals`.
+var mut sync.Mutex // usually these are pointers
 
 func main() {
-	// go greeter("hello") // we made this a go routine
-	// greeter("world")
-
+	// List of websites to check their HTTP status codes.
 	websiteList := []string{
 		"https://lco.dev",
 		"https://go.dev",
@@ -25,37 +27,34 @@ func main() {
 		"https://github.com",
 	}
 
+	// Loop through each website and start a goroutine to fetch its status code.
 	for _, web := range websiteList {
-		go getStatusCode(web)
-		wg.Add(1)
+		go getStatusCode(web) // Launch a goroutine for each website.
+		wg.Add(1)             // Increment the WaitGroup counter for each goroutine.
 	}
 
-	wg.Wait() //always comes at the end of the main func, so that it waits for the whole flow to complete
-	fmt.Println(signals)
+	// Wait for all goroutines to finish before exiting the main function.
+	wg.Wait()
+	fmt.Println(signals) // Print the final `signals` slice.
 }
 
-// func greeter(s string) {
-// 	for i := 0; i < 6; i++ {
-// 		//if we do not add this then the thread where we sent the go routine does not come back and we wont get the output
-// 		// not an ideal solution
-// 		time.Sleep(3 * time.Millisecond)
-
-// 		fmt.Println(s)
-// 	}
-// }
-
+// `getStatusCode` fetches the HTTP status code for a given endpoint.
 func getStatusCode(endpoint string) {
-	defer wg.Done()
+	defer wg.Done() // Decrement the WaitGroup counter when the goroutine completes.
+
+	// Perform an HTTP GET request to the endpoint.
 	result, err := http.Get(endpoint)
 
 	if err != nil {
+		// Print an error message if the request fails.
 		fmt.Printf("OOPS in endpoint: %s\n", endpoint)
 	} else {
+		// Lock the mutex to safely update the shared `signals` slice.
 		mut.Lock()
-		signals = append(signals, endpoint)
-		mut.Unlock()
+		signals = append(signals, endpoint) // Append the endpoint to the `signals` slice.
+		mut.Unlock()                        // Unlock the mutex after updating the slice.
+
+		// Print the HTTP status code for the endpoint.
 		fmt.Printf("%d status code for %s\n", result.StatusCode, endpoint)
 	}
-
-
 }
