@@ -42,7 +42,9 @@ Learning GoLang
 - Goroutines is the way to achieve parallelism
 - ![image](https://github.com/user-attachments/assets/05b02c1b-adfd-4e8f-9483-e1efa6e8b539)
 - ![image](https://github.com/user-attachments/assets/a0f63816-e5cf-4086-96bc-b986f6273b7b)
-- 
+
+#### MUTEX
+- It locks a memory used by a go routine and does not allow other go routine to interfere.
 
 
 
