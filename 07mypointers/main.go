@@ -17,3 +17,6 @@ func main() {
 	*ptr = *ptr + 2 // dereferencing the pointer to change the value of myNumber
 	fmt.Println("Value of myNumber is:", myNumber) // prints 25
 }
+
+
+

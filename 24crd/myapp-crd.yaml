@@ -1,0 +1,32 @@
+apiVersion: apiextensions.k8s.io/v1 # Specifies the API version for the CustomResourceDefinition (CRD).
+kind: CustomResourceDefinition      # Declares the resource type as a CustomResourceDefinition.
+metadata:                           # Metadata section contains information about the CRD.
+  name: myapps.example.com          # The name of the CRD, combining the plural name and group.
+
+spec:                               # Specification of the CRD.
+  group: example.com                # The API group under which the custom resource will be served.
+  versions:                         # Defines the versions of the custom resource.
+    - name: v1alpha1                # The version name of the custom resource.
+      served: true                  # Indicates that this version is served by the API server.
+      storage: true                 # Specifies that this version is used for storing data.
+      schema:                       # Defines the schema for the custom resource.
+        openAPIV3Schema:            # OpenAPI v3 schema for validation of the custom resource.
+          type: object              # The custom resource is an object.
+          properties:               # Defines the properties of the custom resource.
+            spec:                   # The `spec` field of the custom resource.
+              type: object          # The `spec` field is an object.
+              properties:           # Properties of the `spec` field.
+                replicas:           # A property under `spec`.
+                  type: integer     # Specifies that `replicas` is an integer.
+                image:              # Another property under `spec`.
+                  type: string      # Specifies that `image` is a string.
+      subresources:                 # Defines additional subresources for the custom resource.
+        status: {}                  # Enables the `status` subresource for the custom resource.
+
+  scope: Namespaced                 # Specifies that the custom resource is namespaced.
+  names:                            # Defines the naming conventions for the custom resource.
+    plural: myapps                  # The plural name of the custom resource.
+    singular: myapp                 # The singular name of the custom resource.
+    kind: MyApp                     # The kind name of the custom resource.
+    shortNames:                     # Short names for the custom resource.
+      - ma                          # A short name for easier access to the custom resource.
