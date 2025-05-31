@@ -45,6 +45,10 @@ Learning GoLang
 - ![image](https://github.com/user-attachments/assets/a0f63816-e5cf-4086-96bc-b986f6273b7b)
 - ![image](https://github.com/user-attachments/assets/25969b08-4f3e-4df8-aec4-a5b3c3569292)
 - Unbuffered channel is usually done for synchronuous communication, because here the sender will wait for the response from the reciever then only close.
+- ![image](https://github.com/user-attachments/assets/26128744-0ed2-41ca-80e9-21c2c528803f)
+- In buffered channel the sending goroutine can just send the data and continue with its work and not be blocked. Although if the channel is full then the sending GR will be blocked.
+- Hence the communication between sending GR and recievgin GR is asynchronous.
+
 
 
 #### MUTEX
