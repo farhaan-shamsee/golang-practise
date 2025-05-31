@@ -1,3 +1,4 @@
+// This is an infinite channel which will run till the time is up.
 // package main // Declare the main package
 
 // import (
@@ -7,7 +8,6 @@
 
 // func main() { // Main function
 
-// 	// This is an infinite channel which will run till the time is up.
 
 // 	go func ()  {
 // 		for {
@@ -49,3 +49,20 @@ func main() {
     close(jobs)
     time.Sleep(time.Second * 3)
 }
+
+// This program demonstrates a worker pool pattern using Go channels and goroutines.
+
+// What it does:
+// Creates a channel called jobs to send integer jobs to workers.
+// Starts 3 worker goroutines (worker(jobs, i)) that listen on the jobs channel.
+// Sends 5 jobs (integers 1 to 5) into the jobs channel.
+// Closes the channel after sending all jobs, signaling workers to stop when no more jobs are available.
+// Waits 3 seconds (time.Sleep(time.Second * 3)) to allow workers to finish processing before the program exits.
+// Output Example
+// Worker 1 processing job 1
+// Worker 2 processing job 2
+// Worker 3 processing job 3
+// Worker 1 processing job 4
+// Worker 2 processing job 5
+// Summary:
+// The program distributes 5 jobs among 3 workers, each worker processes jobs as they arrive, demonstrating concurrent job processing with channels and goroutines.
