@@ -36,7 +36,7 @@ Learning GoLang
 
 ---
 
-### Concurrency and goroutines
+## Concurrency and goroutines
 
 - ![image](https://github.com/user-attachments/assets/7f652cc6-0681-4d17-ad15-36e701c446cf)
 - Eating, using Instagram and switching on AC analogy
@@ -49,14 +49,25 @@ Learning GoLang
 - In buffered channel the sending goroutine can just send the data and continue with its work and not be blocked. Although if the channel is full then the sending GR will be blocked.
 - Hence the communication between sending GR and recievgin GR is asynchronous.
 
-
-
-#### MUTEX
+## MUTEX
 
 - Mutex is a mutual exclusion lock.
 - It locks a memory used by a go routine and does not allow other go routine to interfere.
 
-### CHANNELS
+## CHANNELS
 
 - Channels are used to communicate between goroutines.
 - They are like pipes that connect concurrent goroutines.
+- In Go, an "infinite channel" pattern is often used to continuously process work or events until some external condition stops it (such as a timeout, signal, or program exit). The channel itself may not be infinite, but the goroutine runs indefinitely, often waiting for work or performing repeated actions.
+- Real Use Cases:
+  - Background Workers
+    - Continuously process jobs from a channel (e.g., handling web requests, processing tasks from a queue).
+
+  - Event Listeners
+    - Listen for events (like file changes, network messages) and react as long as the program runs.
+
+  - Heartbeat/Health Checks
+    - Periodically send heartbeat signals to monitor system health.
+
+  - Polling Services
+    - Regularly poll an external service or database for updates.
