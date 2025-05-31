@@ -1,8 +1,4 @@
-# Golang Practise
-
-Learning GoLang
-
----
+# Golang
 
 ## Memory Management
 
@@ -36,7 +32,7 @@ Learning GoLang
 
 ---
 
-## Concurrency and goroutines
+## Concurrency and goroutine
 
 - ![image](https://github.com/user-attachments/assets/7f652cc6-0681-4d17-ad15-36e701c446cf)
 - Eating, using Instagram and switching on AC analogy
@@ -44,15 +40,19 @@ Learning GoLang
 - ![image](https://github.com/user-attachments/assets/05b02c1b-adfd-4e8f-9483-e1efa6e8b539)
 - ![image](https://github.com/user-attachments/assets/a0f63816-e5cf-4086-96bc-b986f6273b7b)
 - ![image](https://github.com/user-attachments/assets/25969b08-4f3e-4df8-aec4-a5b3c3569292)
-- Unbuffered channel is usually done for synchronuous communication, because here the sender will wait for the response from the reciever then only close.
+- Unbuffered channel is usually done for synchronous communication, because here the sender will wait for the response from the receiver then only close.
 - ![image](https://github.com/user-attachments/assets/26128744-0ed2-41ca-80e9-21c2c528803f)
 - In buffered channel the sending goroutine can just send the data and continue with its work and not be blocked. Although if the channel is full then the sending GR will be blocked.
-- Hence the communication between sending GR and recievgin GR is asynchronous.
+- Hence the communication between sending GR and receiving GR is asynchronous.
+
+---
 
 ## MUTEX
 
 - Mutex is a mutual exclusion lock.
 - It locks a memory used by a go routine and does not allow other go routine to interfere.
+
+---
 
 ## CHANNELS
 
