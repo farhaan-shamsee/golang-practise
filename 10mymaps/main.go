@@ -7,6 +7,9 @@ import (
 func main() {
 	fmt.Println("Maps in golang!")
 
+	// Maps are Go’s built-in associative data type (sometimes called hashes or dicts in other languages).
+	// A map is an unordered collection of key/value pairs, where each key is unique.
+
 	languages := make(map[string]string)
 
 	languages["JS"] = "JavaScript"
@@ -30,4 +33,7 @@ func main() {
 	for _, value := range languages {
 		fmt.Printf("For key v, value is %v\n", value); // prints only value
 	}
+
+	// To remove all key/value pairs from a map, use the clear builtin.
+	// clear(languages)
 }

@@ -4,6 +4,7 @@ import "fmt"
 
 func main() {
 	fmt.Println("Intro to arrays")
+	// In Go, an array is a numbered sequence of elements of a specific length. 
 
 	var fruitList [4]string // array of 4 strings
 	fruitList[0] = "Apple"
