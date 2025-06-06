@@ -2,17 +2,15 @@ package main
 
 import "fmt"
 
-func myFunc(dividend int, divisor int) (int, error) {
-	if divisor == 0 {
-		return 0, fmt.Errorf("divisior is 0")
-	}
-	return dividend/divisor, nil
-}
+var myMap = make(map[string]int)
 
-func main() {
-	result, err := myFunc(10,0)
-	if err != nil {
-		fmt.Println(err)
+func main(){
+	myMap["age"]=1
+	myMap["roll"]=12
+	myMap["makrs"]=112
+
+	for i,j := range myMap{
+		fmt.Println(i,":",j)
 	}
-	fmt.Println(result)
+	// fmt.Println(myMap["age"])
 }
