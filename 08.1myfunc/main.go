@@ -14,7 +14,7 @@ func divide(dividend, divisor int) (int, error) {
 // 3. Anonymous function
 result := func(x int) int {
     return x * x
-}(5) // result = 25
+}(5) // <-- immediately invoked with argument 5
 
 // 4. Named return values (optional)
 func split(num int) (half int, remainder int) {
