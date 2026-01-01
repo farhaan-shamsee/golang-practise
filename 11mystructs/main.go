@@ -8,6 +8,10 @@ type User struct {
 	Age int
 }
 
+func (u *User) changeStatus(status bool) {
+	u.Status = status
+}
+
 func main() {
 	fmt.Println("Intro to structs")
 
@@ -19,4 +23,6 @@ func main() {
 	fmt.Println(user1)
 	fmt.Printf("User1 details are: %+v\n", user1) //%+v prints field names and values, kind of verbose
 	fmt.Printf("Name is: %v, and email is %v\n", user1.Name, user1.Email)
+	user1.changeStatus(false)
+	fmt.Printf("User1 details are: %+v\n", user1) //%+v prints field names and values, kind of verbose
 }

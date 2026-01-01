@@ -1,5 +1,23 @@
 # Golang
 
+## Mics
+
+### Structs
+
+- %+v prints the struct with field names and values, which is more verbose:
+
+  ```go
+  fmt.Printf("User1 details are: %+v\n", user1)
+  // User1 details are: {Name:farrow Email:user1@test.com Status:true Age:16}
+  ```
+
+- Structs group related data fields under one type, useful to model real-world entities.
+- You define structs with the type keyword and struct keyword. [example](./11mystructs/main.go)
+- Instances of structs are created by listing values in the order of fields.
+- Use dot notation (instance.field) to access or modify individual fields.
+- `%v` and `%+v` are format verbs for printing structs with and without field names.
+- Go does not have inheritance, so structs provide composition and data grouping without complex class hierarchies.
+
 ## Memory Management
 
 - Memory management in Go happens automatically.
@@ -71,3 +89,10 @@
 
   - Polling Services
     - Regularly poll an external service or database for updates.
+
+## Things to research
+
+- Bufio package
+  - The `bufio` package in Go provides buffered I/O operations, which can improve performance by reducing the number of system calls. It offers types like `bufio.Reader` and `bufio.Writer` for reading and writing data in larger chunks. This is particularly useful for reading from files or network connections where data may arrive in small pieces. Buffered I/O helps to optimize read and write operations by minimizing the overhead associated with frequent I/O calls.
+
+

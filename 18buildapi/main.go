@@ -29,7 +29,7 @@ type Author struct {
 // This acts like a fake database (in-memory slice of courses)
 var courses []Course
 
-// Helper method to check if course data is empty, middleware, helper - usually goes into seperate file
+// Helper method to check if course data is empty, middleware, helper - usually goes into separate file
 func (c *Course) IsEmpty() bool {
 	// return c.CourseId == "" && c.CourseName == "" //simple way
 	// returns true if both ID and Name are empty
