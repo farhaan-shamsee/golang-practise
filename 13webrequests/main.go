@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 )
 
@@ -29,7 +29,7 @@ func main() {
 	defer response.Body.Close()
 
 	// Read the response body into a byte slice
-	databytes, err := ioutil.ReadAll(response.Body)
+	databytes, err := io.ReadAll(response.Body)
 	if err != nil {
 		// If there's an error reading the response body, terminate the program
 		panic(err)
