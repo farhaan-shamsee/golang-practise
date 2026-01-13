@@ -1,60 +1,60 @@
-package main
+// package main
 
-import (
-	"fmt"
-	"net/http"
-)
+// import (
+// 	"fmt"
+// 	"net/http"
+// )
 
-const validToken = "secret"
+// const validToken = "secret"
 
-// AuthMiddleware checks the "X-Auth-Token" header.
-// If it's "secret", call the next handler.
-// Otherwise, respond with 401 Unauthorized.
-func AuthMiddleware(next http.Handler) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		token := r.Header.Get("X-Auth-Token")
-		if token != validToken {
-			w.WriteHeader(http.StatusUnauthorized)
-			fmt.Fprint(w, "unauthorized")
-			return
-		}
-		next.ServeHTTP(w, r)
-	})
-}
+// // AuthMiddleware checks the "X-Auth-Token" header.
+// // If it's "secret", call the next handler.
+// // Otherwise, respond with 401 Unauthorized.
+// func AuthMiddleware(next http.Handler) http.Handler {
+// 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+// 		token := r.Header.Get("X-Auth-Token")
+// 		if token != validToken {
+// 			w.WriteHeader(http.StatusUnauthorized)
+// 			fmt.Fprint(w, "unauthorized")
+// 			return
+// 		}
+// 		next.ServeHTTP(w, r)
+// 	})
+// }
 
-// helloHandler returns "Hello!" on GET /hello
-func helloHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "Hello!")
-}
+// // helloHandler returns "Hello!" on GET /hello
+// func helloHandler(w http.ResponseWriter, r *http.Request) {
+// 	fmt.Fprint(w, "Hello!")
+// }
 
-// secureHandler returns "You are authorized!" on GET /secure
-func secureHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "You are authorized!")
-}
+// // secureHandler returns "You are authorized!" on GET /secure
+// func secureHandler(w http.ResponseWriter, r *http.Request) {
+// 	fmt.Fprint(w, "You are authorized!")
+// }
 
-// SetupServer configures the HTTP routes with the authentication middleware.
-func SetupServer() http.Handler {
-	mux := http.NewServeMux()
+// // SetupServer configures the HTTP routes with the authentication middleware.
+// func SetupServer() http.Handler {
+// 	mux := http.NewServeMux()
 
-	// Public route: /hello (no auth required)
-	mux.HandleFunc("/hello", helloHandler)
+// 	// Public route: /hello (no auth required)
+// 	mux.HandleFunc("/hello", helloHandler)
 
-	// Secure route: /secure
-	// Wrap with AuthMiddleware
-	secureRoute := http.HandlerFunc(secureHandler)
-	mux.Handle("/secure", AuthMiddleware(secureRoute))
+// 	// Secure route: /secure
+// 	// Wrap with AuthMiddleware
+// 	secureRoute := http.HandlerFunc(secureHandler)
+// 	mux.Handle("/secure", AuthMiddleware(secureRoute))
 
-	return mux
-}
+// 	return mux
+// }
 
-func main() {
-	mux := http.NewServeMux()
+// func main() {
+// 	mux := http.NewServeMux()
 
-	// Protected endpoint: wrapped with middleware
-	mux.Handle("/hello", AuthMiddleware(http.HandlerFunc(helloHandler)))
+// 	// Protected endpoint: wrapped with middleware
+// 	mux.Handle("/hello", AuthMiddleware(http.HandlerFunc(helloHandler)))
 
-	// Protected endpoint: wrapped with middleware
-	mux.Handle("/secure", AuthMiddleware(http.HandlerFunc(secureHandler)))
+// 	// Protected endpoint: wrapped with middleware
+// 	mux.Handle("/secure", AuthMiddleware(http.HandlerFunc(secureHandler)))
 
-	http.ListenAndServe(":8080", mux)
-}
+// 	http.ListenAndServe(":8080", mux)
+// }
