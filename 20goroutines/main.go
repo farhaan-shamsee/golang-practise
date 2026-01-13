@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"sync"
+
 	// "log"
 	"net/http"
 	// "time"
@@ -12,10 +13,10 @@ import (
 var signals = []string{"test"}
 
 // `wg` is a WaitGroup to ensure the main function waits for all goroutines to complete.
-var wg sync.WaitGroup // usually these are pointers
+var wg = &sync.WaitGroup{} // pointer initialized
 
 // `mut` is a Mutex to ensure thread-safe access to shared resources like `signals`.
-var mut sync.Mutex // usually these are pointers
+var mut = &sync.Mutex{} // pointer initialized
 
 func main() {
 	// List of websites to check their HTTP status codes.

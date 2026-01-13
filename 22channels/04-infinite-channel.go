@@ -1,53 +1,49 @@
 // This is an infinite channel which will run till the time is up.
-// package main // Declare the main package
+/*
+package main
 
-// import (
-// 	"fmt" // Import the fmt package for formatted I/O
-// 	"time"
-// )
+import (
+	"fmt"
+	"time"
+)
 
-// func main() { // Main function
-
-
-// 	go func ()  {
-// 		for {
-// 			select {
-// 			default:
-// 				fmt.Println("DOING WORK")
-// 			}
-// 		}
-		
-// 	}()
-
-// 	time.Sleep(time.Second * 3)
-
-// }
-
+func main() {
+	go func ()  {
+		for {
+			select {
+			default:
+				fmt.Println("DOING WORK")
+			}
+		}
+	}()
+	time.Sleep(time.Second * 3)
+}
+*/
 
 package main
 
 import (
-    "fmt"
-    "time"
+	"fmt"
+	"time"
 )
 
 func worker(jobs <-chan int, id int) {
-    for job := range jobs {
-        fmt.Printf("Worker %d processing job %d\n", id, job)
-        time.Sleep(time.Second)
-    }
+	for job := range jobs {
+		fmt.Printf("Worker %d processing job %d\n", id, job)
+		time.Sleep(time.Second)
+	}
 }
 
 func main() {
-    jobs := make(chan int)
-    for i := 1; i <= 3; i++ {
-        go worker(jobs, i)
-    }
-    for j := 1; j <= 5; j++ {
-        jobs <- j
-    }
-    close(jobs)
-    time.Sleep(time.Second * 3)
+	jobs := make(chan int)
+	for i := 1; i <= 3; i++ {
+		go worker(jobs, i)
+	}
+	for j := 1; j <= 5; j++ {
+		jobs <- j
+	}
+	close(jobs)
+	time.Sleep(time.Second * 3)
 }
 
 // This program demonstrates a worker pool pattern using Go channels and goroutines.

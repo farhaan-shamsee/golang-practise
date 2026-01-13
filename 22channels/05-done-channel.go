@@ -1,7 +1,7 @@
-package main // Declare the main package
+package main
 
 import (
-	"fmt" // Import the fmt package for formatted I/O
+	"fmt"
 	"time"
 )
 
@@ -17,7 +17,7 @@ func doWork(done <-chan bool)  {
 	
 }
 
-func main() { // Main function
+func main() {
 
 	doneChannel := make(chan bool)
 
