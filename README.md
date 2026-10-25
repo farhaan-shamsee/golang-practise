@@ -56,5 +56,4 @@ http GET → URL parsing → http client → JSON → gorilla/mux → REST API �
 | `revision-notes.md` | One-liners for quick revision |
 | `dsa-cheat-sheet.md` | Daily coding fundamentals cheat sheet |
 | `big-o.md` | Complexity cheat sheet |
-| `interview-context.md` | Interview prep plan |
 | `crd.md` | CRD, RBAC, controllers, operators |
