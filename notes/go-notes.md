@@ -23,7 +23,7 @@
 - Memory management in Go happens automatically.
 - ![image](https://github.com/user-attachments/assets/c6c97999-46a5-42d4-b90d-81a9f24afea7)
 - Key functions:
-  - `new()`: Allocates memory but does not initialize it.
+  - `new(T)`: Allocates zeroed storage for a `T` and returns a `*T`. The memory is zero-initialized (e.g. `""`, `0`, `false`, `nil`), never left uninitialized.
   - `make()`: Allocates and initializes slices, maps, and channels.
 - Differences between `new` and `make`:
   - `new` is used for value types, while `make` is for built-in reference types.
